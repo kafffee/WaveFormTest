@@ -1,0 +1,42 @@
+﻿<Window x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WaveFormTest"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded" DataContext="MainWindow" Name="HauptFenster">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="90*"/>
+            <RowDefinition Height="10*"/>
+        </Grid.RowDefinitions>
+        <Canvas Name="cnv" ClipToBounds="True" Grid.Row="0" Margin="0" MouseMove="cnv_MouseMove" MouseLeftButtonDown="cnv_MouseLeftButtonDown"  MouseRightButtonDown="cnv_MouseRightButtonDown"  Width="800" Height="450">
+            <!--<Canvas.InputBindings>-->
+                
+            <!--<u:DataPiping.DataPipes>
+                <u:DataPipeCollection>
+                    <u:DataPipe Source="{Binding RelativeSource={RelativeSource AncestorType={x:Type Canvas}}, Path=ActualWidth}"
+Target="{Binding Path=WFBreite, Mode=OneWayToSource}"/>
+                    <u:DataPipe Source="{Binding RelativeSource={RelativeSource AncestorType={x:Type Canvas}}, Path=ActualHeight}"
+Target="{Binding Path=WFHoehe, Mode=OneWayToSource}"/>
+                </u:DataPipeCollection>
+            </u:DataPiping.DataPipes>-->
+
+            <Image Name="imgWF" Canvas.Top="0" Canvas.Left="0" Height="450" Width="800" Stretch="None" HorizontalAlignment="Left" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+            <Label Canvas.Top="0" Canvas.Left="0" FontSize="20" Name="lblZoom" Foreground="White"/>
+            <!--<Line Stroke="Black" StrokeThickness="2" Y1="0" Y2="{Binding ActualHeight, ElementName=imgWF, UpdateSourceTrigger=PropertyChanged}" X1="{Binding MovingXPosWF, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" X2="{Binding MovingXPosWF, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+            <!--<Line Stroke="Red" StrokeThickness="2" Y1="0" Y2="{Binding ActualHeight, ElementName=imgWF, UpdateSourceTrigger=PropertyChanged}" X1="{Binding ClickedXPosWF, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" X2="{Binding ClickedXPosWF, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+            <!--<Line Stroke="Blue" StrokeThickness="2" Y1="0" Y2="{Binding ActualHeight, ElementName=imgWF, UpdateSourceTrigger=PropertyChanged}" X1="{Binding RecordingXPosWF, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}" X2="{Binding RecordingXPosWF, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"/>-->
+
+        </Canvas>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <Button Content="Aufnahme beginnen" Name="btnStarteRecording" PreviewMouseLeftButtonDown="btnStarteRecording_MouseLeftButtonDown"/>
+            <Button Content="Zoom +" Name="btnZoomPlus" PreviewMouseLeftButtonDown="btnZoomPlus_MouseLeftButtonDown"/>
+            <Button Content="Zoom -" Name="btnZoomMinus" PreviewMouseLeftButtonDown="btnZoomMinus_MouseLeftButtonDown"/>
+            <RepeatButton Content="Zurückspulen" Name="btnRewind" Click="btnRewind_Click"  Delay="500" Interval="100"/>
+            <RepeatButton Content="Vorspulen" Name="btnFastForward" Click="btnFastForward_Click"  Delay="500" Interval="100"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>
